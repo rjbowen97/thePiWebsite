@@ -4,9 +4,14 @@ function main() {
 	var jeffPlayer = createPlayer("Jeff");
 	console.log(jeffPlayer);
 	var deck = createDeckOfCards();
-	console.log(deck);
+	// console.log(deck);
 	shuffle(deck);
-	console.log(deck);
+	// console.log(deck);
+	drawCard(jeffPlayer, deck);
+	console.log(jeffPlayer);
+	returnCard(jeffPlayer, deck);
+	console.log(jeffPlayer);
+		console.log(deck);
 }
 
 function createPlayer(name) {
@@ -35,7 +40,11 @@ function createCard(suit, value) {
 }
 
 function drawCard(player, deck) {
-	player.hand.push(deck.pop())
+	player.hand.push(deck.pop());
+}
+
+function returnCard(player, deck) {
+	deck.push(player.hand.pop());
 }
 
 //Fisher-yates shuffle
