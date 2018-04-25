@@ -5,36 +5,8 @@
 </head>
 
 
-<body onload="main()">
+<body onload="">
 	<script>
-
-		const suits = ('H','S','C','D');
-
-		function main() {
-			var jeffPlayer = createPlayer("Jeff");
-			document.getElementById('name').innerHTML = jeffPlayer.name;
-			jeffPlayer.deck = createDeckOfCards();
-			document.getElementById('deck').innerHTML = jeffPlayer.deck[5];
-			console.log(jeffPlayer);
-
-		}
-
-		function createDeckOfCards(argument) {
-			var deck = {};
-
-			for (var currentSuitIndex = 0; currentSuitIndex < suits.length; currentSuitIndex++) {
-				for (var currentIndex = 0; currentIndex < 13; currentIndex++) {
-					deck[currentIndex] = (currentIndex, suits[currentSuitIndex]);
-				}
-			}
-			return deck;
-		}
-
-		function createPlayer(name) {
-			var newPlayer = {};
-			newPlayer.name=name;
-			return newPlayer;
-		}
 
 
 	</script>
