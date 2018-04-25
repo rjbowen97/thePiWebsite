@@ -2,27 +2,46 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 </head>
 
 
-<body onload="timed()">
+<body onload="main()">
 	<script>
 
-		function timed() {
-			i = 0
-			setInterval(showIncrementingVar, 100)
+		const suits = ('H','S','C','D');
+
+		function main() {
+			var jeffPlayer = createPlayer("Jeff");
+			document.getElementById('name').innerHTML = jeffPlayer.name;
+			jeffPlayer.deck = createDeckOfCards();
+			document.getElementById('deck').innerHTML = jeffPlayer.deck[5];
+			console.log(jeffPlayer);
+
 		}
 
-		function showIncrementingVar() {
-			document.getElementById('test').innerHTML = i
-			i++
+		function createDeckOfCards(argument) {
+			var deck = {};
+
+			for (var currentSuitIndex = 0; currentSuitIndex < suits.length; currentSuitIndex++) {
+				for (var currentIndex = 0; currentIndex < 13; currentIndex++) {
+					deck[currentIndex] = (currentIndex, suits[currentSuitIndex]);
+				}
+			}
+			return deck;
 		}
+
+		function createPlayer(name) {
+			var newPlayer = {};
+			newPlayer.name=name;
+			return newPlayer;
+		}
+
 
 	</script>
 
-	<p id="test"></p>
+	<p id="name"></p>
+	<p id="deck"></p>
+
 
 </body>
 
