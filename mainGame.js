@@ -51,10 +51,15 @@ function playerReturnCard(player, deck) {
 }
 
 function checkHandRanking(hand) {
+	var suitsAndValuesTotals = totalSuitsAndValues(hand);
+
+	console.log(suitsAndValuesTotals);
+}
+
+function totalSuitsAndValues(hand) {
 
 	var suitTotals = [];
 	var valueTotals = [];
-
 
 	for (var currentSuitIndex = 0; currentSuitIndex < 4; currentSuitIndex++) {
 		suitTotals.push([currentSuitIndex, 0]);
@@ -70,6 +75,12 @@ function checkHandRanking(hand) {
 
 	console.log(suitTotals);
 	console.log(valueTotals);
+
+	var suitsAndValuesTotals = {};
+	suitsAndValuesTotals.suitTotals = suitTotals;
+	suitsAndValuesTotals.valueTotals = valueTotals;
+
+	return suitsAndValuesTotals;
 
 }
 
