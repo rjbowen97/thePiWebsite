@@ -82,13 +82,6 @@ function shuffle(array) {
 
 // START testing block
 
-function runTesting() {
-	testShuffle(false);
-	testDraw(false);
-	testPlayerReturnCard(false);
-	testTotalSuitsAndValuesOfHand(false);
-}
-
 function testShuffle(print = false) {
 	var deck = createDeckOfCards();
 	
@@ -144,6 +137,13 @@ function testTotalSuitsAndValuesOfHand(print = false) {
 	if (print) {
 		console.log(suitsAndValuesTotals);
 	}
+}
+
+function runTesting() {
+	testShuffle(false);
+	testDraw(false);
+	testPlayerReturnCard(false);
+	testTotalSuitsAndValuesOfHand(false);
 }
 
 runTesting();
