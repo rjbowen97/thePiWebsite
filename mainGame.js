@@ -36,8 +36,6 @@ function playerReturnCard(player, deck) {
 
 function checkHandRanking(hand) {
 	var suitsAndValuesTotals = totalSuitsAndValuesOfHand(hand);
-
-	console.log(suitsAndValuesTotals);
 }
 
 function totalSuitsAndValuesOfHand(hand) {
@@ -56,9 +54,6 @@ function totalSuitsAndValuesOfHand(hand) {
 		suitTotals[hand[currentCardIndex].suit][1]++;
 		valueTotals[hand[currentCardIndex].value - 1][1]++;
 	}
-
-	console.log(suitTotals);
-	console.log(valueTotals);
 
 	var suitsAndValuesTotals = {};
 	suitsAndValuesTotals.suitTotals = suitTotals;
@@ -88,10 +83,10 @@ function shuffle(array) {
 // START testing block
 
 function runTesting() {
-	testShuffle(true);
-	testDraw(true);
-	testPlayerReturnCard(true);
-	testTotalSuitsAndValuesOfHand(true);
+	testShuffle(false);
+	testDraw(false);
+	testPlayerReturnCard(false);
+	testTotalSuitsAndValuesOfHand(false);
 }
 
 function testShuffle(print = false) {
@@ -123,17 +118,32 @@ function testDraw(print = false) {
 function testPlayerReturnCard(print = false) {
 	var jeffPlayer = createPlayer("Jeff");
 	var deck = createDeckOfCards();
+
 	playerDrawCardFromDeck(jeffPlayer, deck);
+
+	if (print) {
+		console.log(jeffPlayer);
+		console.log(deck);
+	}
+
 	playerReturnCard(jeffPlayer, deck);
 
+	if (print) {
+		console.log(jeffPlayer);
+		console.log(deck);
+	}
 }
 
-function testTotalSuitsAndValuesOfHand() {
+function testTotalSuitsAndValuesOfHand(print = false) {
 	var jeffPlayer = createPlayer("Jeff");
 	var deck = createDeckOfCards();
 	playerDrawCardFromDeck(jeffPlayer, deck);
 	playerDrawCardFromDeck(jeffPlayer, deck);
-	totalSuitsAndValuesOfHand(jeffPlayer.hand);
+	var suitsAndValuesTotals = totalSuitsAndValuesOfHand(jeffPlayer.cards);
+
+	if (print) {
+		console.log(suitsAndValuesTotals);
+	}
 }
 
 runTesting();
