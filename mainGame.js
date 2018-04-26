@@ -1,21 +1,5 @@
 function main() {
-	var jeffPlayer = createPlayer("Jeff");
-	console.log(jeffPlayer);
-	var deck = createDeckOfCards();
-	// console.log(deck);
-	shuffle(deck);
-	// console.log(deck);
-	playerDrawCard(jeffPlayer, deck);
-	playerDrawCard(jeffPlayer, deck);
-	playerDrawCard(jeffPlayer, deck);
-	playerDrawCard(jeffPlayer, deck);
-	playerDrawCard(jeffPlayer, deck);
-	console.log(jeffPlayer);
-	checkHandRanking(jeffPlayer.cards)
-	playerReturnCard(jeffPlayer, deck);
-
-	// console.log(jeffPlayer);
-	// console.log(deck);
+	
 }
 
 function createPlayer(name) {
@@ -42,7 +26,7 @@ function createCard(suit, value) {
 	return card;
 }
 
-function playerDrawCard(player, deck) {
+function playerDrawCardFromDeck(player, deck) {
 	player.cards.push(deck.pop());
 }
 
@@ -51,12 +35,12 @@ function playerReturnCard(player, deck) {
 }
 
 function checkHandRanking(hand) {
-	var suitsAndValuesTotals = totalSuitsAndValues(hand);
+	var suitsAndValuesTotals = totalSuitsAndValuesOfHand(hand);
 
 	console.log(suitsAndValuesTotals);
 }
 
-function totalSuitsAndValues(hand) {
+function totalSuitsAndValuesOfHand(hand) {
 
 	var suitTotals = [];
 	var valueTotals = [];
@@ -101,4 +85,57 @@ function shuffle(array) {
 	return array;
 }
 
-main();
+// START testing block
+
+function runTesting() {
+	testShuffle(true);
+	testDraw(true);
+	testPlayerReturnCard(true);
+	testTotalSuitsAndValuesOfHand(true);
+}
+
+function testShuffle(print = false) {
+	var deck = createDeckOfCards();
+	
+	shuffle(deck);
+
+	if (print) {
+		console.log(deck);
+	}
+}
+
+function testDraw(print = false) {
+	var jeffPlayer = createPlayer("Jeff");
+
+	if (print) {
+		console.log(jeffPlayer);
+	}
+
+	var deck = createDeckOfCards();
+	playerDrawCardFromDeck(jeffPlayer, deck);
+	playerDrawCardFromDeck(jeffPlayer, deck);
+
+	if (print) {
+		console.log(jeffPlayer);
+	}
+}
+
+function testPlayerReturnCard(print = false) {
+	var jeffPlayer = createPlayer("Jeff");
+	var deck = createDeckOfCards();
+	playerDrawCardFromDeck(jeffPlayer, deck);
+	playerReturnCard(jeffPlayer, deck);
+
+}
+
+function testTotalSuitsAndValuesOfHand() {
+	var jeffPlayer = createPlayer("Jeff");
+	var deck = createDeckOfCards();
+	playerDrawCardFromDeck(jeffPlayer, deck);
+	playerDrawCardFromDeck(jeffPlayer, deck);
+	totalSuitsAndValuesOfHand(jeffPlayer.hand);
+}
+
+runTesting();
+
+// END testing block
